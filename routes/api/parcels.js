@@ -1,0 +1,19 @@
+const express = require('express');
+const router = express.Router();
+const controllers = require('../../controllers/parcels');
+
+const { validateBody } = require('../../middlewares');
+const { isValidId, authenticate } = require('../../middlewares');
+const { schemas } = require('../../models/parcel');
+
+router.get('/', authenticate, controllers.getParcelsList);
+
+router.get('/:id', authenticate, isValidId, controllers.getParcelById);
+
+router.post('/', authenticate, validateBody(schemas.orderSchema), controllers.addParcel);
+
+router.delete('/:id', authenticate, isValidId, controllers.removeParcel);
+
+router.put('/:id', authenticate, isValidId, validateBody(schemas.schema), controllers.updateParcel);
+
+module.exports = router;
