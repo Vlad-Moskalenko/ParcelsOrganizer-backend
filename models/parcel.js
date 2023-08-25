@@ -15,7 +15,6 @@ const parcelSchema = new Schema(
     },
     type: {
       type: String,
-      required: [true, 'Set parcel type'],
     },
     date: {
       type: String,
