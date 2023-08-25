@@ -10,7 +10,9 @@ router.get('/', authenticate, controllers.getParcelsList);
 
 router.get('/:id', authenticate, isValidId, controllers.getParcelById);
 
-router.post('/', authenticate, validateBody(schemas.orderSchema), controllers.addParcel);
+router.post('/order', authenticate, validateBody(schemas.orderSchema), controllers.addParcel);
+
+router.post('/deliver', authenticate, validateBody(schemas.deliverSchema), controllers.addParcel);
 
 router.delete('/:id', authenticate, isValidId, controllers.removeParcel);
 
