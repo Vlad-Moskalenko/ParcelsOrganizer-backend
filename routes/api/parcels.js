@@ -16,6 +16,12 @@ router.post('/deliver', authenticate, validateBody(schemas.deliverSchema), contr
 
 router.delete('/:id', authenticate, isValidId, controllers.removeParcel);
 
-router.put('/:id', authenticate, isValidId, validateBody(schemas.schema), controllers.updateParcel);
+router.put(
+  '/:id',
+  authenticate,
+  isValidId,
+  validateBody(schemas.orderSchema),
+  controllers.updateParcel
+);
 
 module.exports = router;
