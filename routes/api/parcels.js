@@ -17,10 +17,18 @@ router.post('/deliver', authenticate, validateBody(schemas.deliverSchema), contr
 router.delete('/:id', authenticate, isValidId, controllers.removeParcel);
 
 router.put(
-  '/:id',
+  '/order/:id',
   authenticate,
   isValidId,
   validateBody(schemas.orderSchema),
+  controllers.updateParcel
+);
+
+router.put(
+  '/deliver/:id',
+  authenticate,
+  isValidId,
+  validateBody(schemas.deliverSchema),
   controllers.updateParcel
 );
 
