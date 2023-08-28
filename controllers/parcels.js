@@ -30,7 +30,7 @@ const removeParcel = async (req, res) => {
     throw errorHandler(404, 'Not found');
   }
 
-  res.status(200).json({ message: 'Parcel deleted' });
+  res.status(200).json(removedParcel);
 };
 
 const updateParcel = async (req, res) => {
