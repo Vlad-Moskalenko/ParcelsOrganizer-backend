@@ -22,6 +22,9 @@ const parcelSchema = new Schema(
     description: {
       type: String,
     },
+    parcelType: {
+      type: String,
+    },
     owner: {
       type: Schema.Types.ObjectId,
       ref: 'user',
