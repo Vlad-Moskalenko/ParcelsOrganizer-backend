@@ -36,23 +36,17 @@ parcelSchema.post('save', handleMongooseError);
 
 const Parcel = model('parcel', parcelSchema);
 
-const orderSchema = Joi.object({
+const parcelSchemaJoi = Joi.object({
+  parcelType: Joi.string().required(),
   location: Joi.string().required(),
   destination: Joi.string().required(),
-  type: Joi.string().required(),
-  date: Joi.string().required(),
-  description: Joi.string().required(),
-});
-
-const deliverSchema = Joi.object({
-  location: Joi.string().required(),
-  destination: Joi.string().required(),
-  date: Joi.string().required(),
+  type: Joi.string(),
+  date: Joi.string(),
+  description: Joi.string(),
 });
 
 const schemas = {
-  orderSchema,
-  deliverSchema,
+  parcelSchemaJoi,
 };
 
 module.exports = {

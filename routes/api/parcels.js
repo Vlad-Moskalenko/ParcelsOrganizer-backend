@@ -10,25 +10,15 @@ router.get('/', authenticate, controllers.getParcelsList);
 
 router.get('/:id', authenticate, isValidId, controllers.getParcelById);
 
-router.post('/order', authenticate, validateBody(schemas.orderSchema), controllers.addParcel);
-
-router.post('/deliver', authenticate, validateBody(schemas.deliverSchema), controllers.addParcel);
+router.post('/order', authenticate, validateBody(schemas.parcelSchemaJoi), controllers.addParcel);
 
 router.delete('/:id', authenticate, isValidId, controllers.removeParcel);
 
 router.put(
-  '/order/:id',
+  '/:id',
   authenticate,
   isValidId,
-  validateBody(schemas.orderSchema),
-  controllers.updateParcel
-);
-
-router.put(
-  '/deliver/:id',
-  authenticate,
-  isValidId,
-  validateBody(schemas.deliverSchema),
+  validateBody(schemas.parcelSchemaJoi),
   controllers.updateParcel
 );
 
