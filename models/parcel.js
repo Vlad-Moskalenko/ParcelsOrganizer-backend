@@ -18,7 +18,6 @@ const parcelSchema = new Schema(
     },
     date: {
       type: String,
-      required: [true, 'Set date of dispatch'],
     },
     description: {
       type: String,
