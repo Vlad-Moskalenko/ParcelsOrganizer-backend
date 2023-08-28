@@ -18,7 +18,7 @@ router.put(
   '/:id',
   authenticate,
   isValidId,
-  validateBody(schemas.updatedParcelSchema),
+  validateBody(schemas.parcelSchemaJoi),
   controllers.updateParcel
 );
 

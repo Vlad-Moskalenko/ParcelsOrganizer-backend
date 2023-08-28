@@ -47,17 +47,8 @@ const parcelSchemaJoi = Joi.object({
   description: Joi.string(),
 });
 
-const updatedParcelSchema = Joi.object({
-  location: Joi.string().required(),
-  destination: Joi.string().required(),
-  type: Joi.string(),
-  date: Joi.string(),
-  description: Joi.string(),
-});
-
 const schemas = {
   parcelSchemaJoi,
-  updatedParcelSchema,
 };
 
 module.exports = {
