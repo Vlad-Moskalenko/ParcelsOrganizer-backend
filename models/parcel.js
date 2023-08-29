@@ -42,9 +42,9 @@ const parcelSchemaJoi = Joi.object({
   parcelType: Joi.string().required(),
   location: Joi.string().required(),
   destination: Joi.string().required(),
-  type: Joi.string(),
-  date: Joi.string(),
-  description: Joi.string(),
+  type: Joi.string().allow(''),
+  date: Joi.string().allow(''),
+  description: Joi.string().allow(''),
 });
 
 const schemas = {
