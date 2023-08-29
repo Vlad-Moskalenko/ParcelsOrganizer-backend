@@ -3,7 +3,9 @@ const errorHandler = require('../helpers/errorHandler');
 const ctrlWrapper = require('../helpers/ctrlWrapper');
 
 const getParcelsList = async (req, res) => {
-  const parcelsList = await Parcel.find();
+  const { _id: owner } = req.user;
+
+  const parcelsList = await Parcel.find({ owner });
 
   res.status(200).json(parcelsList);
 };
