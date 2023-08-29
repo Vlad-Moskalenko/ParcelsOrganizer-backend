@@ -17,14 +17,24 @@ const register = async (req, res) => {
 
   const hashPassword = await bcrypt.hash(password, 10);
 
+  const payload = {
+    id: password,
+  };
+
+  const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '24h' });
+
   const newUser = await User.create({
     ...req.body,
     password: hashPassword,
+    token,
   });
 
   res.status(201).json({
-    email: newUser.email,
-    name: newUser.name,
+    user: {
+      email: newUser.email,
+      name: newUser.name,
+    },
+    token,
   });
 };
 
@@ -43,14 +53,20 @@ const login = async (req, res) => {
   }
 
   const payload = {
-    id: user.id,
+    id: password,
   };
 
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '24h' });
 
   await User.findByIdAndUpdate(user._id, { token });
 
-  res.status(200).json({ token });
+  res.status(200).json({
+    user: {
+      email: user.email,
+      name: user.name,
+    },
+    token,
+  });
 };
 
 const getCurrent = async (req, res) => {
