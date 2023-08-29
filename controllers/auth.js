@@ -35,7 +35,7 @@ const register = async (req, res) => {
       email: newUser.email,
       name: newUser.name,
     },
-    token: newUser.token,
+    token,
   });
 };
 
