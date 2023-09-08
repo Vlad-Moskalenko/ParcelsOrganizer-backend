@@ -13,10 +13,11 @@ const parcelSchema = new Schema(
       type: String,
       required: [true, 'Set parcel destination'],
     },
-    type: {
-      type: String,
-    },
     date: {
+      type: String,
+      required: [true, 'Set date of dispatch'],
+    },
+    type: {
       type: String,
     },
     description: {
@@ -42,8 +43,8 @@ const parcelSchemaJoi = Joi.object({
   parcelType: Joi.string().required(),
   location: Joi.string().required(),
   destination: Joi.string().required(),
+  date: Joi.string().allow('').required(),
   type: Joi.string().allow(''),
-  date: Joi.string().allow(''),
   description: Joi.string().allow(''),
 });
 
